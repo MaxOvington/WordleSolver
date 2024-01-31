@@ -69,28 +69,28 @@ include src/CMakeFiles/graph.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/graph.dir/flags.make
 
-src/CMakeFiles/graph.dir/test1.cpp.o: src/CMakeFiles/graph.dir/flags.make
-src/CMakeFiles/graph.dir/test1.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/src/test1.cpp
-src/CMakeFiles/graph.dir/test1.cpp.o: src/CMakeFiles/graph.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/graph.dir/test1.cpp.o"
-	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/graph.dir/test1.cpp.o -MF CMakeFiles/graph.dir/test1.cpp.o.d -o CMakeFiles/graph.dir/test1.cpp.o -c /home/MCMO/Documents/CODE/WordleSolver/src/test1.cpp
+src/CMakeFiles/graph.dir/graph.cpp.o: src/CMakeFiles/graph.dir/flags.make
+src/CMakeFiles/graph.dir/graph.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp
+src/CMakeFiles/graph.dir/graph.cpp.o: src/CMakeFiles/graph.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/graph.dir/graph.cpp.o"
+	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/graph.dir/graph.cpp.o -MF CMakeFiles/graph.dir/graph.cpp.o.d -o CMakeFiles/graph.dir/graph.cpp.o -c /home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp
 
-src/CMakeFiles/graph.dir/test1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/graph.dir/test1.cpp.i"
-	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/MCMO/Documents/CODE/WordleSolver/src/test1.cpp > CMakeFiles/graph.dir/test1.cpp.i
+src/CMakeFiles/graph.dir/graph.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/graph.dir/graph.cpp.i"
+	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp > CMakeFiles/graph.dir/graph.cpp.i
 
-src/CMakeFiles/graph.dir/test1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/graph.dir/test1.cpp.s"
-	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/MCMO/Documents/CODE/WordleSolver/src/test1.cpp -o CMakeFiles/graph.dir/test1.cpp.s
+src/CMakeFiles/graph.dir/graph.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/graph.dir/graph.cpp.s"
+	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp -o CMakeFiles/graph.dir/graph.cpp.s
 
 # Object files for target graph
 graph_OBJECTS = \
-"CMakeFiles/graph.dir/test1.cpp.o"
+"CMakeFiles/graph.dir/graph.cpp.o"
 
 # External object files for target graph
 graph_EXTERNAL_OBJECTS =
 
-src/libgraph.a: src/CMakeFiles/graph.dir/test1.cpp.o
+src/libgraph.a: src/CMakeFiles/graph.dir/graph.cpp.o
 src/libgraph.a: src/CMakeFiles/graph.dir/build.make
 src/libgraph.a: src/CMakeFiles/graph.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libgraph.a"

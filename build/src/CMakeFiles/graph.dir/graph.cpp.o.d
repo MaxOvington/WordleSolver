@@ -1,6 +1,8 @@
-example/CMakeFiles/main.dir/main.cpp.o: \
- /home/MCMO/Documents/CODE/WordleSolver/example/main.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/13.2.1/iostream \
+src/CMakeFiles/graph.dir/graph.cpp.o: \
+ /home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp \
+ /usr/include/stdc-predef.h \
+ /home/MCMO/Documents/CODE/WordleSolver/src/../include/graph/graph.h \
+ /usr/include/c++/13.2.1/iostream \
  /usr/include/c++/13.2.1/bits/requires_hosted.h \
  /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -135,5 +137,4 @@ example/CMakeFiles/main.dir/main.cpp.o: \
  /usr/include/c++/13.2.1/bits/locale_facets.tcc \
  /usr/include/c++/13.2.1/bits/basic_ios.tcc \
  /usr/include/c++/13.2.1/bits/ostream.tcc /usr/include/c++/13.2.1/istream \
- /usr/include/c++/13.2.1/bits/istream.tcc \
- /home/MCMO/Documents/CODE/WordleSolver/src/../include/graph/graph.h
+ /usr/include/c++/13.2.1/bits/istream.tcc

@@ -130,29 +130,29 @@ graph/fast:
 	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/build
 .PHONY : graph/fast
 
-test1.o: test1.cpp.o
-.PHONY : test1.o
+graph.o: graph.cpp.o
+.PHONY : graph.o
 
 # target to build an object file
-test1.cpp.o:
-	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/test1.cpp.o
-.PHONY : test1.cpp.o
+graph.cpp.o:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/graph.cpp.o
+.PHONY : graph.cpp.o
 
-test1.i: test1.cpp.i
-.PHONY : test1.i
+graph.i: graph.cpp.i
+.PHONY : graph.i
 
 # target to preprocess a source file
-test1.cpp.i:
-	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/test1.cpp.i
-.PHONY : test1.cpp.i
+graph.cpp.i:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/graph.cpp.i
+.PHONY : graph.cpp.i
 
-test1.s: test1.cpp.s
-.PHONY : test1.s
+graph.s: graph.cpp.s
+.PHONY : graph.s
 
 # target to generate assembly for a file
-test1.cpp.s:
-	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/test1.cpp.s
-.PHONY : test1.cpp.s
+graph.cpp.s:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/graph.cpp.s
+.PHONY : graph.cpp.s
 
 # Help Target
 help:
@@ -163,9 +163,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... graph"
-	@echo "... test1.o"
-	@echo "... test1.i"
-	@echo "... test1.s"
+	@echo "... graph.o"
+	@echo "... graph.i"
+	@echo "... graph.s"
 .PHONY : help
 
 

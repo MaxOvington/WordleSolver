@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/graph.dir/test1.cpp.o"
-  "CMakeFiles/graph.dir/test1.cpp.o.d"
+  "CMakeFiles/graph.dir/graph.cpp.o"
+  "CMakeFiles/graph.dir/graph.cpp.o.d"
   "libgraph.a"
   "libgraph.pdb"
 )
