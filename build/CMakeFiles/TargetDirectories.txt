@@ -1,0 +1,10 @@
+/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles/edit_cache.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles/rebuild_cache.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/include/CMakeFiles/edit_cache.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/include/CMakeFiles/rebuild_cache.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/src/CMakeFiles/graph.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/src/CMakeFiles/edit_cache.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/src/CMakeFiles/rebuild_cache.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/example/CMakeFiles/main.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/example/CMakeFiles/edit_cache.dir
+/home/MCMO/Documents/CODE/WordleSolver/build/example/CMakeFiles/rebuild_cache.dir
