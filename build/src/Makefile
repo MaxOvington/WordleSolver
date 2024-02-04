@@ -154,6 +154,30 @@ graph.cpp.s:
 	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/graph.cpp.s
 .PHONY : graph.cpp.s
 
+process.o: process.cpp.o
+.PHONY : process.o
+
+# target to build an object file
+process.cpp.o:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/process.cpp.o
+.PHONY : process.cpp.o
+
+process.i: process.cpp.i
+.PHONY : process.i
+
+# target to preprocess a source file
+process.cpp.i:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/process.cpp.i
+.PHONY : process.cpp.i
+
+process.s: process.cpp.s
+.PHONY : process.s
+
+# target to generate assembly for a file
+process.cpp.s:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/process.cpp.s
+.PHONY : process.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -166,6 +190,9 @@ help:
 	@echo "... graph.o"
 	@echo "... graph.i"
 	@echo "... graph.s"
+	@echo "... process.o"
+	@echo "... process.i"
+	@echo "... process.s"
 .PHONY : help
 
 

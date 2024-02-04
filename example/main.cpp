@@ -1,22 +1,44 @@
 #include <iostream>
 #include "graph/graph.h"
+#include "graph/process.h"
+#include <filesystem>
+#include <fstream>
 
 int main (void) {
-    int x;
+    int num_words = 0;
+    std::filesystem::path p = std::filesystem::current_path();
+    p = (p.parent_path().parent_path()) / "src/words.txt";
 
-    Graph wordle_graph(18);
+    std::cout << "Current path is " << p << "\n";
 
-    wordle_graph.add_edge("test");
-    wordle_graph.add_edge("under");
+    std::ifstream fp(p); 
+    std::string lne;
+    while (getline(fp, lne)) {
+        if (!lne.empty()) num_words++;
+    }
 
+    Graph wordle_graph(num_words);
+    
+    //read from file
+    //wordle_graph.print_graph_list();
+    
+    wordle_graph.print_words();
 
-    wordle_graph.print_graph_list();
+    int ret = 1;
+    while (ret == 1) {
+        std::cout << "Enter a character combination: \n";
+        std::vector<std::string> input;
+        std::string s;
+        for (int i = 0; i < INPUT_SIZE; i++) {
+            std::cin >> s;
+            input.push_back(s);
+        }
+        std::vector<int> vec;
+        ret = translate_input(vec, input);
+        if (ret == 1) std::cout << "One or more characters invalid!\n";
+    }
 
-    std::cout << "The value of the class is " << wordle_graph.get_val() << "\n";
-    std::cout << "Now try enter a number: ";
-    std::cin >> x;
-    wordle_graph.set_val(x);
-    std::cout << "The value of the class now is " << wordle_graph.get_val() << "\n";
-    std::cout << ('a' - 97) << "\n";
+    std::cout << "Success!\n";
+
     return 0;
 }

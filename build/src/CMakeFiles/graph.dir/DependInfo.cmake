@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp" "src/CMakeFiles/graph.dir/graph.cpp.o" "gcc" "src/CMakeFiles/graph.dir/graph.cpp.o.d"
+  "/home/MCMO/Documents/CODE/WordleSolver/src/process.cpp" "src/CMakeFiles/graph.dir/process.cpp.o" "gcc" "src/CMakeFiles/graph.dir/process.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
