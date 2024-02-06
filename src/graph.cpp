@@ -111,3 +111,25 @@ auto Graph::process_words() -> int {
     fp.close();
     return 0;
 }
+
+auto Graph::search_match(std::vector<int> vec) -> void {
+    
+    // std::cout << vec.size() << "\n";
+
+    // for (int i = 0; i < 5; i++) {
+    //     std::cout << vec[i] << " ";
+    // }
+    // std::cout << "\n";
+
+    //pick the 1st topic
+    for (int i = 0; i < node_list_[vec[0]].size(); i++) {
+        if (matrix_[vec[0]][node_list_[vec[0]][i]] &&
+        matrix_[vec[1]][node_list_[vec[1]][i]] &&
+        matrix_[vec[2]][node_list_[vec[2]][i]] &&
+        matrix_[vec[3]][node_list_[vec[3]][i]] &&
+        matrix_[vec[4]][node_list_[vec[4]][i]]) {
+            std::cout << wordlist_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL] << " ";
+        }
+    }
+    std::cout << "\n";
+}

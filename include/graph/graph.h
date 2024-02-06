@@ -19,6 +19,7 @@ class Graph {
         auto add_edge(std::string word) -> void;
         auto print_words() -> void;
         auto print_graph_list() -> void;
+        auto search_match(std::vector<int> vec) -> void;
 
     private:
         int val_;
