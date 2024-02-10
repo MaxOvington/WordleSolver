@@ -21,6 +21,10 @@ auto Graph::print_words() -> void {
     std::cout << "\n";
 }
 
+auto Graph::get_word_size() -> int {
+    return wordlist_.size();
+}
+
 auto Graph::binarySearch(std::string word, int lo, int hi) -> bool {
     //binary search case where nothing left
     while (lo <= hi) {
@@ -96,11 +100,11 @@ auto Graph::add_word(std::string s) -> void {
 auto Graph::process_words() -> int {
 
     std::filesystem::path p = std::filesystem::current_path();
-    p = p.parent_path().parent_path() / "src/words.txt";
+    p = p.parent_path().parent_path() / "src/dict.txt";
 
-    std::string filename = "words.txt";
+    std::string filename = "dict.txt";
     std::string line;
-    std::ifstream fp("/home/MCMO/Documents/CODE/WordleSolver/src/words.txt", std::ios::binary);
+    std::ifstream fp("/home/MCMO/Documents/CODE/WordleSolver/src/dict.txt", std::ios::binary);
     if (!fp.is_open()) {
         std::cerr << "Could not open the file - '" << filename << "'" << "\n";
         return EXIT_FAILURE;
@@ -112,24 +116,20 @@ auto Graph::process_words() -> int {
     return 0;
 }
 
-auto Graph::search_match(std::vector<int> vec) -> void {
+auto Graph::search_match(std::vector<int> vec, int round) -> void {
     
-    // std::cout << vec.size() << "\n";
-
-    // for (int i = 0; i < 5; i++) {
-    //     std::cout << vec[i] << " ";
-    // }
-    // std::cout << "\n";
-
-    //pick the 1st topic
+    std::cout << "---------------------------------\n";
+    std::cout << "WORDS FOUND:: \n";
     for (int i = 0; i < node_list_[vec[0]].size(); i++) {
-        if (matrix_[vec[0]][node_list_[vec[0]][i]] &&
-        matrix_[vec[1]][node_list_[vec[1]][i]] &&
-        matrix_[vec[2]][node_list_[vec[2]][i]] &&
-        matrix_[vec[3]][node_list_[vec[3]][i]] &&
-        matrix_[vec[4]][node_list_[vec[4]][i]]) {
+        int eval = 1;
+        for (int j = 0; j < vec.size(); j++) {
+            eval &= matrix_[vec[j]][node_list_[vec[0]][i]];
+        }
+        if (eval && word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL] == round) {
             std::cout << wordlist_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL] << " ";
+            word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
         }
     }
     std::cout << "\n";
+    std::cout << "---------------------------------\n";
 }
