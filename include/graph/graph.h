@@ -10,7 +10,7 @@
 class Graph {
     public: 
         Graph(int val) {
-            auto m = std::vector<std::vector<int>> (val + NUM_LETTERS_TOTAL, 
+            auto m = std::vector<std::vector<int>> (NUM_LETTERS_TOTAL, 
             std::vector<int> (val + NUM_LETTERS_TOTAL));
             matrix_ = m;
             int ret = process_words();

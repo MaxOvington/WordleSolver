@@ -57,20 +57,20 @@ auto Graph::add_edge(std::string word) -> void {
         //add positive connection 
         if (alphabet[i]){
             node_list_[i].push_back(NUM_LETTERS_TOTAL + wordlist_.size() - 1); 
-            node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(i);
+            //node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(i);
             //adjacency matrix
             matrix_[i][wordlist_.size() - 1 + NUM_LETTERS_TOTAL] = 1;
-            matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][i] = 1;
+            //matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][i] = 1;
         } 
     }
 
     for (int i = 0; i < word.size(); i++) {
         //add positive connection for *1..5 letters
         node_list_[((i + 1) * 26) + (word[i] - 97)].push_back(wordlist_.size() - 1 + NUM_LETTERS_TOTAL);
-        node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(((i + 1) * 26) + (word[i] - 97));
+        //node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(((i + 1) * 26) + (word[i] - 97));
         //adjacency matrix
         matrix_[((i + 1) * 26) + (word[i] - 97)][wordlist_.size() - 1 + NUM_LETTERS_TOTAL] = 1;
-        matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][((i + 1) * 26) + (word[i] - 97)] = 1; 
+        //matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][((i + 1) * 26) + (word[i] - 97)] = 1; 
     }
 
     //add remaining negative connections
@@ -79,10 +79,10 @@ auto Graph::add_edge(std::string word) -> void {
         if (node_list_[i].size() == 0 || 
         node_list_[i][node_list_[i].size() - 1] != wordlist_.size() - 1 + NUM_LETTERS_TOTAL) {
             node_list_[i + NUM_LETTERS].push_back(wordlist_.size() - 1 + NUM_LETTERS_TOTAL); 
-            node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(i + NUM_LETTERS);
+            //node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(i + NUM_LETTERS);
             //adjacency matrix
             matrix_[i + NUM_LETTERS][wordlist_.size() - 1 + NUM_LETTERS_TOTAL] = 1;
-            matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][i + NUM_LETTERS] = 1; 
+            //matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][i + NUM_LETTERS] = 1; 
         }
     }
 
@@ -93,7 +93,7 @@ auto Graph::add_word(std::string s) -> void {
     //add to wordlist if not in wordlist
     if (!binarySearch(s, 0, wordlist_.size() - 1)) {
         wordlist_.push_back(s);
-        node_list_.push_back(std::vector<int>());
+        //node_list_.push_back(std::vector<int>());
     }
 }
 
@@ -120,6 +120,7 @@ auto Graph::search_match(std::vector<int> vec, int round) -> void {
     
     std::cout << "---------------------------------\n";
     std::cout << "WORDS FOUND:: \n";
+    int cnt = 0;
     for (int i = 0; i < node_list_[vec[0]].size(); i++) {
         int eval = 1;
         for (int j = 0; j < vec.size(); j++) {
@@ -128,8 +129,10 @@ auto Graph::search_match(std::vector<int> vec, int round) -> void {
         if (eval && word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL] == round) {
             std::cout << wordlist_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL] << " ";
             word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
+            cnt++;
         }
     }
     std::cout << "\n";
+    std::cout << cnt << " WORDs\n";
     std::cout << "---------------------------------\n";
 }
