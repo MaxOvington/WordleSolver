@@ -1,6 +1,7 @@
 #include <iostream>
 #include "graph/graph.h"
 #include "graph/process.h"
+#include "graph/entropy.h"
 #include <filesystem>
 #include <fstream>
 
@@ -22,8 +23,13 @@ int main (void) {
 
     Graph wordle_graph(num_words);
 
+    auto universe = wordle_graph.get_active_wordlist();
+
+    entropy(num_words, 16331, universe, wordle_graph);
+    entropy(num_words, 0, universe, wordle_graph);
+
+    bool is_first = true;
     int ret = 1;
-    int rounds = 0;
     while (true) {
         while (ret == 1) {
             std::cout << "Enter a character combination: \n";
@@ -36,10 +42,19 @@ int main (void) {
             std::vector<int> vec;
             ret = translate_input(vec, input);
             if (ret == 1) std::cout << "One or more characters invalid!\n";
-            else wordle_graph.search_match(vec, rounds);
+            else {
+               universe = wordle_graph.search_match(true, vec, universe, is_first);
+            }
         }
         ret = 1;
-        rounds++;
+        is_first = false;
+
+        int j = 0;
+        for (int i = 0; i < universe.size(); i++) {
+            j++;
+        }
+        std::cout << j << " words in the universe\n";
+
     }
 
     return 0;

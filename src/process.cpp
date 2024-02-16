@@ -23,3 +23,4 @@ int translate_input(std::vector<int> &ret, std::vector<std::string> s) {
     }
     return 0;
 }
+

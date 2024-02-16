@@ -97,19 +97,35 @@ src/CMakeFiles/graph.dir/process.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/graph.dir/process.cpp.s"
 	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/MCMO/Documents/CODE/WordleSolver/src/process.cpp -o CMakeFiles/graph.dir/process.cpp.s
 
+src/CMakeFiles/graph.dir/entropy.cpp.o: src/CMakeFiles/graph.dir/flags.make
+src/CMakeFiles/graph.dir/entropy.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/src/entropy.cpp
+src/CMakeFiles/graph.dir/entropy.cpp.o: src/CMakeFiles/graph.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/graph.dir/entropy.cpp.o"
+	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/graph.dir/entropy.cpp.o -MF CMakeFiles/graph.dir/entropy.cpp.o.d -o CMakeFiles/graph.dir/entropy.cpp.o -c /home/MCMO/Documents/CODE/WordleSolver/src/entropy.cpp
+
+src/CMakeFiles/graph.dir/entropy.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/graph.dir/entropy.cpp.i"
+	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/MCMO/Documents/CODE/WordleSolver/src/entropy.cpp > CMakeFiles/graph.dir/entropy.cpp.i
+
+src/CMakeFiles/graph.dir/entropy.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/graph.dir/entropy.cpp.s"
+	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/MCMO/Documents/CODE/WordleSolver/src/entropy.cpp -o CMakeFiles/graph.dir/entropy.cpp.s
+
 # Object files for target graph
 graph_OBJECTS = \
 "CMakeFiles/graph.dir/graph.cpp.o" \
-"CMakeFiles/graph.dir/process.cpp.o"
+"CMakeFiles/graph.dir/process.cpp.o" \
+"CMakeFiles/graph.dir/entropy.cpp.o"
 
 # External object files for target graph
 graph_EXTERNAL_OBJECTS =
 
 src/libgraph.a: src/CMakeFiles/graph.dir/graph.cpp.o
 src/libgraph.a: src/CMakeFiles/graph.dir/process.cpp.o
+src/libgraph.a: src/CMakeFiles/graph.dir/entropy.cpp.o
 src/libgraph.a: src/CMakeFiles/graph.dir/build.make
 src/libgraph.a: src/CMakeFiles/graph.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libgraph.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libgraph.a"
 	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && $(CMAKE_COMMAND) -P CMakeFiles/graph.dir/cmake_clean_target.cmake
 	cd /home/MCMO/Documents/CODE/WordleSolver/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/graph.dir/link.txt --verbose=$(VERBOSE)
 

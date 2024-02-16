@@ -130,6 +130,30 @@ graph/fast:
 	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/build
 .PHONY : graph/fast
 
+entropy.o: entropy.cpp.o
+.PHONY : entropy.o
+
+# target to build an object file
+entropy.cpp.o:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/entropy.cpp.o
+.PHONY : entropy.cpp.o
+
+entropy.i: entropy.cpp.i
+.PHONY : entropy.i
+
+# target to preprocess a source file
+entropy.cpp.i:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/entropy.cpp.i
+.PHONY : entropy.cpp.i
+
+entropy.s: entropy.cpp.s
+.PHONY : entropy.s
+
+# target to generate assembly for a file
+entropy.cpp.s:
+	cd /home/MCMO/Documents/CODE/WordleSolver/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/graph.dir/build.make src/CMakeFiles/graph.dir/entropy.cpp.s
+.PHONY : entropy.cpp.s
+
 graph.o: graph.cpp.o
 .PHONY : graph.o
 
@@ -187,6 +211,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... graph"
+	@echo "... entropy.o"
+	@echo "... entropy.i"
+	@echo "... entropy.s"
 	@echo "... graph.o"
 	@echo "... graph.i"
 	@echo "... graph.s"
