@@ -25,8 +25,8 @@ int main (void) {
 
     auto universe = wordle_graph.get_active_wordlist();
 
-    entropy(num_words, 16331, universe, wordle_graph);
-    entropy(num_words, 0, universe, wordle_graph);
+    // entropy(num_words, 16331, universe, wordle_graph);
+    //generate_entropy(num_words, universe, wordle_graph);
 
     bool is_first = true;
     int ret = 1;

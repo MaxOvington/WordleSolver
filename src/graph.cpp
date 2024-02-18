@@ -117,7 +117,7 @@ auto Graph::process_words() -> int {
     return 0;
 }
 
-auto Graph::search_match(bool is_printing, std::vector<int> vec, std::vector<int> universe, bool is_first_round) -> std::vector<int> {
+auto Graph::search_match(bool is_printing, std::vector<int> vec, std::vector<int> &universe, bool is_first_round) -> std::vector<int> {
     
     auto match = std::vector<int>();
 

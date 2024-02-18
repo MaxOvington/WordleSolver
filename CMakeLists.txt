@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(WordleSolver)
 
+set(CMAKE_BUILD_TYPE RelWithDebInfo)
+set(CMAKE_CXX_FLAGS "-g")
+set(CMAKE_CXX_FLAGS_DEBUG "-g -fopenmp -pthread")
 add_subdirectory(include)
 add_subdirectory(src)
 

@@ -93,6 +93,8 @@ main_EXTERNAL_OBJECTS =
 example/main: example/CMakeFiles/main.dir/main.cpp.o
 example/main: example/CMakeFiles/main.dir/build.make
 example/main: src/libgraph.a
+example/main: /usr/lib/libgomp.so
+example/main: /usr/lib/libpthread.a
 example/main: example/CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/MCMO/Documents/CODE/WordleSolver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
 	cd /home/MCMO/Documents/CODE/WordleSolver/build/example && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)

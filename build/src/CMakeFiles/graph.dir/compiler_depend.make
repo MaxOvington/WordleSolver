@@ -41,7 +41,9 @@ src/CMakeFiles/graph.dir/entropy.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
   /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdio.h \
   /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
@@ -174,6 +176,7 @@ src/CMakeFiles/graph.dir/entropy.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
   /usr/include/c++/13.2.1/ostream \
   /usr/include/c++/13.2.1/pstl/pstl_config.h \
   /usr/include/c++/13.2.1/stdexcept \
+  /usr/include/c++/13.2.1/stdlib.h \
   /usr/include/c++/13.2.1/streambuf \
   /usr/include/c++/13.2.1/string \
   /usr/include/c++/13.2.1/string_view \
@@ -231,6 +234,7 @@ src/CMakeFiles/graph.dir/entropy.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
   /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/wctype.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/omp.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/stddef.h
 
@@ -260,7 +264,9 @@ src/CMakeFiles/graph.dir/graph.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/src
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-least.h \
   /usr/include/bits/stdint-uintn.h \
+  /usr/include/bits/stdio.h \
   /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
@@ -490,7 +496,9 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
   /usr/include/bits/select.h \
   /usr/include/bits/setjmp.h \
   /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdio.h \
   /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
@@ -673,7 +681,11 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/locale:
 
-/usr/include/c++/13.2.1/bits/vector.tcc:
+/usr/include/c++/13.2.1/iomanip:
+
+/usr/include/c++/13.2.1/filesystem:
+
+/usr/include/c++/13.2.1/ext/concurrence.h:
 
 /usr/include/c++/13.2.1/bits/postypes.h:
 
@@ -681,9 +693,9 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/bits/memoryfwd.h:
 
-/usr/include/bits/libm-simd-decl-stubs.h:
-
 /usr/include/c++/13.2.1/bits/locale_classes.tcc:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
 
 /usr/include/alloca.h:
 
@@ -721,8 +733,6 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/bits/basic_ios.tcc:
 
-/usr/include/c++/13.2.1/bits/specfun.h:
-
 /usr/include/c++/13.2.1/bits/basic_ios.h:
 
 /usr/include/bits/types/struct_tm.h:
@@ -738,8 +748,6 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 /usr/include/bits/byteswap.h:
 
 /usr/include/c++/13.2.1/backward/binders.h:
-
-/usr/include/c++/13.2.1/bits/quoted_string.h:
 
 /usr/include/c++/13.2.1/bits/codecvt.h:
 
@@ -775,6 +783,16 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/bits/allocator.h:
 
+/usr/include/bits/types/clock_t.h:
+
+/usr/include/bits/types/__fpos_t.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/c++/13.2.1/bits/localefwd.h:
+
+/usr/include/c++/13.2.1/type_traits:
+
 /usr/include/bits/confname.h:
 
 /usr/include/bits/libc-header-start.h:
@@ -782,8 +800,6 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 /usr/include/bits/iscanonical.h:
 
 /usr/include/sys/cdefs.h:
-
-/usr/include/c++/13.2.1/filesystem:
 
 /usr/include/c++/13.2.1/bits/new_allocator.h:
 
@@ -807,8 +823,6 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/bits/types/FILE.h:
 
-/usr/include/c++/13.2.1/bits/locale_facets.h:
-
 /usr/include/c++/13.2.1/bits/utility.h:
 
 /usr/include/c++/13.2.1/codecvt:
@@ -824,12 +838,6 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 /usr/include/c++/13.2.1/x86_64-pc-linux-gnu/bits/ctype_base.h:
 
 /home/MCMO/Documents/CODE/WordleSolver/src/entropy.cpp:
-
-/usr/include/c++/13.2.1/bits/stl_iterator_base_funcs.h:
-
-/usr/include/bits/unistd_ext.h:
-
-/home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp:
 
 /usr/include/c++/13.2.1/bits/refwrap.h:
 
@@ -873,17 +881,15 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/bits/locale.h:
 
-/usr/include/bits/types/__fpos_t.h:
+/usr/include/c++/13.2.1/bits/stl_uninitialized.h:
 
-/usr/include/bits/mathcalls.h:
+/usr/include/c++/13.2.1/bits/sstream.tcc:
 
-/usr/include/bits/types/clock_t.h:
+/usr/include/c++/13.2.1/string_view:
 
-/usr/include/c++/13.2.1/bits/localefwd.h:
+/usr/include/bits/atomic_wide_counter.h:
 
-/usr/include/c++/13.2.1/type_traits:
-
-/usr/include/c++/13.2.1/bits/unique_ptr.h:
+/usr/include/bits/posix_opt.h:
 
 /usr/include/asm-generic/errno-base.h:
 
@@ -905,6 +911,8 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/bits/functexcept.h:
 
+/usr/include/bits/stdio.h:
+
 /usr/include/bits/time64.h:
 
 /usr/include/bits/stdlib-float.h:
@@ -912,6 +920,8 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 /usr/include/c++/13.2.1/bits/charconv.h:
 
 /usr/include/bits/uintn-identity.h:
+
+/usr/include/c++/13.2.1/bits/vector.tcc:
 
 /usr/include/bits/cpu-set.h:
 
@@ -929,9 +939,17 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/stdexcept:
 
-/usr/include/bits/posix_opt.h:
+/usr/include/c++/13.2.1/bits/unique_ptr.h:
 
-/usr/include/bits/atomic_wide_counter.h:
+/usr/include/c++/13.2.1/stdlib.h:
+
+/usr/include/c++/13.2.1/bits/quoted_string.h:
+
+/usr/include/c++/13.2.1/bits/stl_iterator_base_funcs.h:
+
+/home/MCMO/Documents/CODE/WordleSolver/src/graph.cpp:
+
+/usr/include/bits/unistd_ext.h:
 
 /usr/include/bits/endian.h:
 
@@ -981,13 +999,15 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/linux/close_range.h:
 
+/usr/include/c++/13.2.1/bits/locale_facets.h:
+
+/usr/include/bits/stdlib-bsearch.h:
+
 /usr/include/bits/types/time_t.h:
 
 /usr/include/bits/mathcalls-helper-functions.h:
 
 /usr/include/bits/getopt_core.h:
-
-/usr/include/c++/13.2.1/ext/concurrence.h:
 
 /usr/include/bits/types.h:
 
@@ -1003,11 +1023,7 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/bits/types/__FILE.h:
 
-/usr/include/c++/13.2.1/bits/stl_uninitialized.h:
-
-/usr/include/c++/13.2.1/bits/sstream.tcc:
-
-/usr/include/c++/13.2.1/string_view:
+/usr/include/c++/13.2.1/bits/specfun.h:
 
 /usr/include/c++/13.2.1/bits/memory_resource.h:
 
@@ -1045,9 +1061,9 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/ext/atomicity.h:
 
-/usr/include/bits/stdint-intn.h:
-
 /usr/include/bits/types/clockid_t.h:
+
+/usr/include/bits/stdint-intn.h:
 
 /usr/include/c++/13.2.1/ext/numeric_traits.h:
 
@@ -1081,6 +1097,10 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 
 /usr/include/c++/13.2.1/streambuf:
 
+/usr/include/c++/13.2.1/ext/aligned_buffer.h:
+
+/usr/include/c++/13.2.1/tr1/beta_function.tcc:
+
 /usr/include/c++/13.2.1/bits/std_abs.h:
 
 /usr/include/c++/13.2.1/tr1/ell_integral.tcc:
@@ -1088,6 +1108,8 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 /usr/include/c++/13.2.1/tr1/legendre_function.tcc:
 
 /usr/include/c++/13.2.1/tr1/poly_hermite.tcc:
+
+/usr/lib/gcc/x86_64-pc-linux-gnu/13.2.1/include/omp.h:
 
 /usr/include/c++/13.2.1/tr1/riemann_zeta.tcc:
 
@@ -1190,9 +1212,3 @@ src/CMakeFiles/graph.dir/process.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/s
 /usr/include/c++/13.2.1/cstdint:
 
 /usr/include/c++/13.2.1/ctime:
-
-/usr/include/c++/13.2.1/tr1/beta_function.tcc:
-
-/usr/include/c++/13.2.1/ext/aligned_buffer.h:
-
-/usr/include/c++/13.2.1/iomanip:

@@ -6,6 +6,8 @@
 #include <fstream>
 #include <cmath>
 #include <unistd.h> 
+#include <stdlib.h> 
+#include <omp.h>
 
 #define DEFAULT 0
 #define GREEN 1
@@ -22,15 +24,53 @@ bool letter_is_present(char c, std::vector<int> input) {
     return false;
 }
 
-double entropy(int total, int word, std::vector<int> universe, Graph g) {
-    std::cout << "finding word.." << g.wordlist_[word] << "\n";
+
+std::vector<std::pair<int, double>> generate_entropy(int total, std::vector<int> &universe, Graph &g) {
+
+    auto ret = std::vector<std::pair<int, double>>(universe.size());
+
+    std::string bar (20, ' ');
+
+    omp_set_num_threads(4);
+
+    // int x = 2;
+    // #pragma omp parallel for reduction(+: x)
+    // for (int i = 0; i < 10000; i++) {
+    //     std::cout << omp_get_thread_num() << "\n";
+    //     sleep(1);
+    //     x += i;
+    // }
+
+    int cnt = 0;
+    double curr_percentage = 0.05;
+    int j = 0;
+    #pragma omp parallel for
+    for (int i = 0; i < 100; i++) {
+        double e = entropy(total, universe[i], universe, g);
+        ret[i] = std::make_pair(universe[i], e);
+        cnt++;
+        system("clear");
+        double crr = (cnt * 1.0)/100;
+        std::cout << "[" << bar << "] " << (crr * 100.0) << "%" << std::endl;
+        if (crr >= curr_percentage) {
+            bar[j] = '#';
+            j++;
+            curr_percentage += 0.05;
+        }
+    }
+    std::cout << "\n";
+    return ret;
+}
+
+double entropy(int total, int word, std::vector<int> universe, Graph &g) {
+    //std::cout << "finding word.." << g.wordlist_[word] << "\n";
     auto input = std::vector<int>();
     double p = do_entropy(total, input, word, universe, g, 0, DEFAULT);
-    std::cout << "Total entropy is " << p << "\n";
+    //std::cout << "Total entropy is " << p << "\n";
     return p;
 }
 
-double do_entropy(int total, std::vector<int> input, int word, std::vector<int> universe, Graph g, int index, int type) {
+double do_entropy(int total, std::vector<int> input, int word, std::vector<int> universe, Graph &g, int index, int type) {
 
     //TODO make wordlist not public!!
 

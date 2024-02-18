@@ -1,4 +1,4 @@
-example/CMakeFiles/main.dir/main.cpp.o: \
+example/CMakeFiles/mainn.dir/main.cpp.o: \
  /home/MCMO/Documents/CODE/WordleSolver/example/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13.2.1/iostream \
  /usr/include/c++/13.2.1/bits/requires_hosted.h \

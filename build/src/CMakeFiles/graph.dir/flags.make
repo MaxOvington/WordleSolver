@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/MCMO/Documents/CODE/WordleSolver/src/../include
 
-CXX_FLAGS = 
+CXX_FLAGS = -g -O2 -g -DNDEBUG -fopenmp
 

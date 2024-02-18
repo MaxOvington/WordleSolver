@@ -29,7 +29,9 @@ example/CMakeFiles/main.dir/main.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/e
   /usr/include/bits/stdint-intn.h \
   /usr/include/bits/stdint-least.h \
   /usr/include/bits/stdint-uintn.h \
+  /usr/include/bits/stdio.h \
   /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
@@ -285,8 +287,6 @@ example/CMakeFiles/main.dir/main.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/e
 
 /usr/include/c++/13.2.1/stdexcept:
 
-/usr/include/c++/13.2.1/sstream:
-
 /usr/include/c++/13.2.1/ratio:
 
 /usr/include/c++/13.2.1/pstl/pstl_config.h:
@@ -353,14 +353,6 @@ example/CMakeFiles/main.dir/main.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/e
 
 /usr/include/c++/13.2.1/bits/stl_algobase.h:
 
-/usr/include/bits/types/struct_timeval.h:
-
-/usr/include/c++/13.2.1/string:
-
-/usr/include/c++/13.2.1/bits/ostream_insert.h:
-
-/usr/include/c++/13.2.1/bits/refwrap.h:
-
 /usr/include/bits/types/struct_timespec.h:
 
 /usr/include/bits/types/struct_sched_param.h:
@@ -419,7 +411,25 @@ example/CMakeFiles/main.dir/main.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/e
 
 /usr/include/bits/types/__FILE.h:
 
+/usr/include/c++/13.2.1/sstream:
+
+/usr/include/bits/stdlib-bsearch.h:
+
+/usr/include/bits/types/struct_timeval.h:
+
+/usr/include/c++/13.2.1/string:
+
+/usr/include/c++/13.2.1/bits/ostream_insert.h:
+
+/usr/include/c++/13.2.1/bits/refwrap.h:
+
 /usr/include/bits/cpu-set.h:
+
+/usr/include/c++/13.2.1/bits/vector.tcc:
+
+/usr/include/c++/13.2.1/bits/std_abs.h:
+
+/usr/include/bits/typesizes.h:
 
 /usr/include/bits/uintn-identity.h:
 
@@ -487,11 +497,9 @@ example/CMakeFiles/main.dir/main.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/e
 
 /usr/include/bits/time64.h:
 
-/usr/include/c++/13.2.1/bits/functexcept.h:
+/usr/include/bits/types/__mbstate_t.h:
 
 /usr/include/bits/stdio_lim.h:
-
-/usr/include/bits/types/__mbstate_t.h:
 
 /usr/include/bits/time.h:
 
@@ -540,6 +548,16 @@ example/CMakeFiles/main.dir/main.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/e
 /usr/include/c++/13.2.1/bits/range_access.h:
 
 /usr/include/c++/13.2.1/bits/istream.tcc:
+
+/usr/include/c++/13.2.1/bits/functexcept.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/c++/13.2.1/bits/sstream.tcc:
+
+/usr/include/c++/13.2.1/bits/predefined_ops.h:
+
+/usr/include/bits/wchar.h:
 
 /usr/include/bits/types/timer_t.h:
 
@@ -679,22 +697,10 @@ example/CMakeFiles/main.dir/main.cpp.o: /home/MCMO/Documents/CODE/WordleSolver/e
 
 /usr/include/libintl.h:
 
-/usr/include/c++/13.2.1/bits/quoted_string.h:
-
 /usr/include/c++/13.2.1/bits/requires_hosted.h:
+
+/usr/include/c++/13.2.1/bits/quoted_string.h:
 
 /usr/include/bits/long-double.h:
 
 /usr/include/c++/13.2.1/bits/shared_ptr.h:
-
-/usr/include/bits/wchar.h:
-
-/usr/include/c++/13.2.1/bits/predefined_ops.h:
-
-/usr/include/c++/13.2.1/bits/sstream.tcc:
-
-/usr/include/c++/13.2.1/bits/vector.tcc:
-
-/usr/include/bits/typesizes.h:
-
-/usr/include/c++/13.2.1/bits/std_abs.h:

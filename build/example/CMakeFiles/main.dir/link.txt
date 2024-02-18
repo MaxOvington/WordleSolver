@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o -o main  ../src/libgraph.a 
+/usr/bin/c++ -g -O2 -g -DNDEBUG CMakeFiles/main.dir/main.cpp.o -o main  ../src/libgraph.a /usr/lib/libgomp.so /usr/lib/libpthread.a 

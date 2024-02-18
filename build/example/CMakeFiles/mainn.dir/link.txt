@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -O2 -g -DNDEBUG CMakeFiles/mainn.dir/main.cpp.o -o mainn  ../src/libgraph.a /usr/lib/libgomp.so /usr/lib/libpthread.a 
