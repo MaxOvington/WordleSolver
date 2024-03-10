@@ -13,6 +13,8 @@
 #define GREEN 1
 #define ORANGE 2
 #define RED 3
+#define ALPH_OFFSET 121
+#define NUM_STEPS 243
 
 bool letter_is_present(char c, std::vector<int> input) {
     for (int i = 0; i < input.size(); i++) {
@@ -25,32 +27,24 @@ bool letter_is_present(char c, std::vector<int> input) {
 }
 
 
-std::vector<std::pair<int, double>> generate_entropy(int total, std::vector<int> &universe, Graph &g) {
+std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int> &universe, Graph &g) {
 
-    auto ret = std::vector<std::pair<int, double>>(universe.size());
+    auto ret = std::vector<std::pair<double, int>>(universe.size());
 
     std::string bar (20, ' ');
 
     omp_set_num_threads(4);
 
-    // int x = 2;
-    // #pragma omp parallel for reduction(+: x)
-    // for (int i = 0; i < 10000; i++) {
-    //     std::cout << omp_get_thread_num() << "\n";
-    //     sleep(1);
-    //     x += i;
-    // }
-
     int cnt = 0;
     double curr_percentage = 0.05;
     int j = 0;
     #pragma omp parallel for
-    for (int i = 0; i < 100; i++) {
-        double e = entropy(total, universe[i], universe, g);
-        ret[i] = std::make_pair(universe[i], e);
+    for (int i = 0; i < universe.size(); i++) {
+        double e = do_entropy2(total, universe[i], universe, g);
+        ret[i] = std::make_pair(e, universe[i]);
         cnt++;
         system("clear");
-        double crr = (cnt * 1.0)/100;
+        double crr = (cnt * 1.0)/universe.size();
         std::cout << "[" << bar << "] " << (crr * 100.0) << "%" << std::endl;
         if (crr >= curr_percentage) {
             bar[j] = '#';
@@ -63,11 +57,55 @@ std::vector<std::pair<int, double>> generate_entropy(int total, std::vector<int>
 }
 
 double entropy(int total, int word, std::vector<int> universe, Graph &g) {
-    //std::cout << "finding word.." << g.wordlist_[word] << "\n";
     auto input = std::vector<int>();
     double p = do_entropy(total, input, word, universe, g, 0, DEFAULT);
-    //std::cout << "Total entropy is " << p << "\n";
     return p;
+}
+
+int generate_word_match(std::string &curr, std::string &target) {
+    //get target word
+    auto alph = std::vector<int>(26, 0);
+    for (int i = 0; i < target.size(); i++) {
+        alph[target[i] - 'a']++;
+    }
+
+    auto curr_alph = std::vector<int>(26, 0);
+    int num = 0;
+    for (int i = 0; i < curr.size(); i++) {
+        if (curr[i] == target[i]) {
+            //std::cout << "green\n";
+            num = (num * 3) + 1;
+        } else if (curr[i] != target[i] &&
+        curr_alph[curr[i] - 'a'] < alph[curr[i] - 'a'] ) {
+            //std::cout << "orange\n";
+            num = (num * 3) + 2;
+        } else if (curr[i] != target[i] && 
+        curr_alph[curr[i] - 'a'] >= alph[curr[i] - 'a']) {
+            //std::cout << "red\n";
+            num = (num * 3) + 3;
+        }
+        curr_alph[curr[i] - 'a']++;
+    }
+    return num - ALPH_OFFSET;
+}
+
+double do_entropy2(int total, int word, std::vector<int> universe, Graph &g) {
+    auto entropy_list = std::vector<int>(NUM_STEPS, 0);
+
+    double entropy = 0.0;
+    int k = 0;
+    for (int i = 0; i < universe.size(); i++) {
+        int pos = generate_word_match(g.wordlist_[word], g.wordlist_[universe[i]]);
+        entropy_list[pos]++;
+        k++;
+    }
+    for (int i = 0; i < entropy_list.size(); i++) {
+        double p = (entropy_list[i] * 1.0) / total;
+        if (p == 0.0) entropy += 0.0;
+        else entropy += p * log2(1.0/p);
+    }
+    return entropy;
+
 }
 
 double do_entropy(int total, std::vector<int> input, int word, std::vector<int> universe, Graph &g, int index, int type) {
@@ -75,14 +113,8 @@ double do_entropy(int total, std::vector<int> input, int word, std::vector<int> 
     //TODO make wordlist not public!!
 
     if (index >= 5) {
-        // for (int i = 0; i < input.size(); i++) {
-        //     std::cout << input[i] << " ";
-        // }
-        // std::cout << "\n";
         universe = g.search_match(false, input, universe, false);
-        //std::cout << "value is " << (1.0 * universe.size()) / total << "\n";
         double p = (1.0 * universe.size()) / total;
-        //std::cout << "next value is " << p << ", " << log2(1.0/p) << "\n";
         if (p == 0.0) return 0.0;
         double x = p * log2(1.0/p);
         return x;
@@ -96,27 +128,19 @@ double do_entropy(int total, std::vector<int> input, int word, std::vector<int> 
     
     //get word index
     char c = g.wordlist_[word][index];
-    
-    if (type == GREEN) {
-        //std::cout << "Green.. " << index <<  "\n";
-        input.push_back(c - 'a' + (26 * (index + 1)));
 
+    if (type == GREEN) {
+        input.push_back(c - 'a' + (26 * (index + 1)));
     } else if (type == ORANGE) {
-        //std::cout << "Orange.. " << index <<  "\n";
         input.push_back(c - 'a');
         input.push_back(c - 'a' + (26 * (index + 1)) + NUM_LETTERS);
-
     } if (type == RED) {
-        //std::cout << "Red.. " << index <<  "\n";
         if (!letter_is_present(c, input)) {
-            //std::cout << "letter not present\n";
             input.push_back(c - 'a' + NUM_LETTERS);
         } else {
             return 0.0;
         }
     }
-    //std::cout << "Recursing now... \n";
     index++;
-    //sleep(2);
     return do_entropy(total, input, word, universe, g, index++, DEFAULT);
 }

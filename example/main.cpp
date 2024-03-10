@@ -3,6 +3,7 @@
 #include "graph/process.h"
 #include "graph/entropy.h"
 #include <filesystem>
+#include <algorithm>
 #include <fstream>
 
 int main (void) {
@@ -19,14 +20,17 @@ int main (void) {
     }
     std::cout << "Lines read: " << num_words << "\n";
 
-    //return 0;
-
     Graph wordle_graph(num_words);
 
     auto universe = wordle_graph.get_active_wordlist();
 
-    // entropy(num_words, 16331, universe, wordle_graph);
-    //generate_entropy(num_words, universe, wordle_graph);
+    //generate entropy list
+    auto retval = generate_entropy(num_words, universe, wordle_graph);
+    std::sort(retval.begin(), retval.end(), std::greater<std::pair<double, int>>());
+    //TODO FIX THIS CODE --> case where set is less than 20
+    for (int i = 0; i < 20; i++) {
+        std::cout << i + 1 << " " << wordle_graph.wordlist_[retval[i].second] << " , " << retval[i].first << "\n";
+    }
 
     bool is_first = true;
     int ret = 1;
@@ -43,7 +47,14 @@ int main (void) {
             ret = translate_input(vec, input);
             if (ret == 1) std::cout << "One or more characters invalid!\n";
             else {
-               universe = wordle_graph.search_match(true, vec, universe, is_first);
+                universe = wordle_graph.search_match(true, vec, universe, is_first);
+                auto retval = generate_entropy(num_words, universe, wordle_graph);
+                std::sort(retval.begin(), retval.end(), std::greater<std::pair<double, int>>());
+                
+                //TODO FIX THIS CODE --> case where set is less than 20
+                for (int i = 0; i < 20; i++) {
+                    std::cout << i + 1 << " " << wordle_graph.wordlist_[retval[i].second] << " , " << retval[i].first << "\n";
+                }
             }
         }
         ret = 1;

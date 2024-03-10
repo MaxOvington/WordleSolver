@@ -11,4 +11,8 @@ double do_entropy(int total, std::vector<int> input, int word, std::vector<int> 
 
 bool letter_is_present(char c);
 
-std::vector<std::pair<int, double>> generate_entropy(int total, std::vector<int> &universe, Graph &g);
+int generate_word_match(std::string &curr, std::string &target);
+
+double do_entropy2(int total, int word, std::vector<int> universe, Graph &g);
+
+std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int> &universe, Graph &g);
