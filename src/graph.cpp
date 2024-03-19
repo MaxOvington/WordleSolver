@@ -2,6 +2,8 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
+#include <algorithm>
+#include <unistd.h> 
 
 auto Graph::print_graph_list() -> void {
     for (int i = 0; i < node_list_.size(); i++) {
@@ -85,7 +87,6 @@ auto Graph::add_edge(std::string word) -> void {
             //matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][i + NUM_LETTERS] = 1; 
         }
     }
-
     //std::cout << "Added word: [" << word << "]\n";
 }
 
@@ -117,45 +118,41 @@ auto Graph::process_words() -> int {
     return 0;
 }
 
-auto Graph::search_match(bool is_printing, std::vector<int> vec, std::vector<int> &universe, bool is_first_round) -> std::vector<int> {
+auto Graph::search_match(std::vector<int> vec, std::vector<int> &universe, bool is_first_round) -> std::vector<int> {
     
+    //check if all nums are in appropriate range
     auto match = std::vector<int>();
-
-    if (is_printing) std::cout << "---------------------------------\n";
-    if (is_printing) std::cout << "WORDS FOUND:: \n";
-    int cnt = 0;
-
-    if (is_first_round) {
-        for (int i = 0; i < node_list_[vec[0]].size(); i++) {
-            int eval = 1;
-            for (int j = 0; j < vec.size(); j++) {
-                eval &= matrix_[vec[j]][node_list_[vec[0]][i]];
-            }
-            if (eval) {
-                if (is_printing) std::cout << wordlist_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL] << " ";
-                //word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
-                cnt++;
-                match.push_back(node_list_[vec[0]][i] - NUM_LETTERS_TOTAL);
-            } 
-        }
-    } else if (!is_first_round) {
-        for (int i = 0; i < universe.size(); i++) {
-            int eval = 1;
-            for (int j = 0; j < vec.size(); j++) {
-                eval &= matrix_[vec[j]][universe[i] + NUM_LETTERS_TOTAL];
-            }
-            if (eval) {
-                if (is_printing) std::cout << wordlist_[universe[i]] << " ";
-                //word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
-                cnt++;
-                match.push_back(universe[i]);
-            } 
-        }
+    auto invalid = [](int i) { return (i < 0 || i >= NUM_LETTERS_TOTAL); };
+    auto is_invalid = std::find_if(vec.begin(), vec.end(), invalid) != vec.end();
+    if (vec.size() > 10 || vec.size() == 0 || is_invalid == true) {
+        std::cout << "Error: Invalid input!\n";
+        return universe;
     }
 
-    if (is_printing) std::cout << "\n";
-    if (is_printing) std::cout << cnt << " WORDs\n";
-    if (is_printing) std::cout << "---------------------------------\n";
+    // if (is_printing) std::cout << "---------------------------------\n";
+    // if (is_printing) std::cout << "WORDS FOUND:: \n";
+    int cnt = 0;
+    int iter = (is_first_round) ?  node_list_[vec[0]].size() : universe.size();
+
+    for (int i = 0; i < iter; i++) {
+        int eval = 1;
+        for (int j = 0; j < vec.size(); j++) {
+            eval &= (is_first_round) ? (matrix_[vec[j]][node_list_[vec[0]][i]]) : 
+            (matrix_[vec[j]][universe[i] + NUM_LETTERS_TOTAL]);
+        }
+        if (eval) {
+            // FIRST ROUND --> word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
+            // NOT FIRST --> if (is_printing) std::cout << wordlist_[universe[i]] << " ";
+            //word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
+            cnt++;
+            (is_first_round) ? (match.push_back(node_list_[vec[0]][i] - NUM_LETTERS_TOTAL)) : 
+            (match.push_back(universe[i]));
+        } 
+    }
+
+    // if (is_printing) std::cout << "\n";
+    // if (is_printing) std::cout << cnt << " WORDs\n";
+    // if (is_printing) std::cout << "---------------------------------\n";
     return match;
 }
 

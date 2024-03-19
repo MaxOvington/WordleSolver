@@ -19,7 +19,7 @@ class Graph {
         auto add_edge(std::string word) -> void;
         auto print_words() -> void;
         auto print_graph_list() -> void;
-        auto search_match(bool is_printing, std::vector<int> vec, std::vector<int> &universe, bool is_first_round) -> std::vector<int>;
+        auto search_match(std::vector<int> vec, std::vector<int> &universe, bool is_first_round) -> std::vector<int>;
         auto get_word_size() -> int;
         auto get_active_wordlist() -> std::vector<int>;
         std::vector<std::string> wordlist_;

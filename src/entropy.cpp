@@ -8,6 +8,8 @@
 #include <unistd.h> 
 #include <stdlib.h> 
 #include <omp.h>
+#include <thread>
+#include <mutex>
 
 #define DEFAULT 0
 #define GREEN 1
@@ -26,25 +28,16 @@ bool letter_is_present(char c, std::vector<int> input) {
     return false;
 }
 
-
-std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int> &universe, Graph &g) {
-
-    auto ret = std::vector<std::pair<double, int>>(universe.size());
-
+void print_loading_bar(bool &calc, int &cnt, int total, std::mutex &mtx) {
+    double crr = 0.0;
     std::string bar (20, ' ');
-
-    omp_set_num_threads(4);
-
-    int cnt = 0;
     double curr_percentage = 0.05;
     int j = 0;
-    #pragma omp parallel for
-    for (int i = 0; i < universe.size(); i++) {
-        double e = do_entropy2(total, universe[i], universe, g);
-        ret[i] = std::make_pair(e, universe[i]);
-        cnt++;
+    mtx.lock();
+    while (!calc) {
+    mtx.unlock();
         system("clear");
-        double crr = (cnt * 1.0)/universe.size();
+        crr = (cnt * 1.0)/total;
         std::cout << "[" << bar << "] " << (crr * 100.0) << "%" << std::endl;
         if (crr >= curr_percentage) {
             bar[j] = '#';
@@ -52,7 +45,33 @@ std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int>
             curr_percentage += 0.05;
         }
     }
-    std::cout << "\n";
+    mtx.unlock();
+}
+
+std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int> &universe, Graph &g) {
+
+    auto ret = std::vector<std::pair<double, int>>(universe.size());
+
+    int cnt = 0;
+    bool calculated = false;
+
+    std::mutex mtx;
+    std::thread loading_bar(print_loading_bar, std::ref(calculated), 
+    std::ref(cnt), universe.size(), std::ref(mtx));
+
+    int j = 0;
+    #pragma omp parallel for
+    for (int i = 0; i < universe.size(); i++) {
+        double e = do_entropy2(total, universe[i], universe, g);
+        ret[i] = std::make_pair(e, universe[i]);
+        cnt++;
+    }
+    mtx.lock();
+    calculated = true;
+    mtx.unlock();
+
+    loading_bar.join();
+
     return ret;
 }
 
@@ -112,8 +131,10 @@ double do_entropy(int total, std::vector<int> input, int word, std::vector<int> 
 
     //TODO make wordlist not public!!
 
+    bool dummy = false;
+
     if (index >= 5) {
-        universe = g.search_match(false, input, universe, false);
+        universe = g.search_match(input, universe, false);
         double p = (1.0 * universe.size()) / total;
         if (p == 0.0) return 0.0;
         double x = p * log2(1.0/p);

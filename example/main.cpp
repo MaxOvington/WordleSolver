@@ -22,50 +22,35 @@ int main (void) {
 
     Graph wordle_graph(num_words);
 
-    auto universe = wordle_graph.get_active_wordlist();
-
     //generate entropy list
-    auto retval = generate_entropy(num_words, universe, wordle_graph);
-    std::sort(retval.begin(), retval.end(), std::greater<std::pair<double, int>>());
-    //TODO FIX THIS CODE --> case where set is less than 20
-    for (int i = 0; i < 20; i++) {
-        std::cout << i + 1 << " " << wordle_graph.wordlist_[retval[i].second] << " , " << retval[i].first << "\n";
-    }
+    auto universe = wordle_graph.get_active_wordlist();
+    generate_universe(universe, wordle_graph);
+
+    std::cout << wordle_graph.wordlist_[16890] << "\n";
 
     bool is_first = true;
     int ret = 1;
-    while (true) {
-        while (ret == 1) {
-            std::cout << "Enter a character combination: \n";
-            std::vector<std::string> input;
-            std::string s;
-            for (int i = 0; i < INPUT_SIZE; i++) {
-                std::cin >> s;
-                input.push_back(s);
-            }
-            std::vector<int> vec;
-            ret = translate_input(vec, input);
-            if (ret == 1) std::cout << "One or more characters invalid!\n";
-            else {
-                universe = wordle_graph.search_match(true, vec, universe, is_first);
-                auto retval = generate_entropy(num_words, universe, wordle_graph);
-                std::sort(retval.begin(), retval.end(), std::greater<std::pair<double, int>>());
-                
-                //TODO FIX THIS CODE --> case where set is less than 20
-                for (int i = 0; i < 20; i++) {
-                    std::cout << i + 1 << " " << wordle_graph.wordlist_[retval[i].second] << " , " << retval[i].first << "\n";
-                }
-            }
+    while (universe.size() > 1) {
+        std::cout << "Enter a character combination: \n";
+        std::vector<std::string> input;
+        std::string s;
+
+        for (int i = 0; i < INPUT_SIZE; i++) {
+            std::cin >> s;
+            if (s == "0x0") continue;
+            input.push_back(s);
         }
-        ret = 1;
+
+        std::vector<int> vec;
+        ret = translate_input(vec, input);
+        if (ret == 1) {
+            std::cout << "One or more characters invalid!\n";
+            continue; 
+        }
+        universe = wordle_graph.search_match(vec, universe, is_first);
+        generate_universe(universe, wordle_graph);
+        std::cout << universe.size() << " word(s) in the universe\n";
         is_first = false;
-
-        int j = 0;
-        for (int i = 0; i < universe.size(); i++) {
-            j++;
-        }
-        std::cout << j << " words in the universe\n";
-
     }
 
     return 0;
