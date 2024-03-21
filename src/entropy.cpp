@@ -48,9 +48,9 @@ void print_loading_bar(bool &calc, int &cnt, int total, std::mutex &mtx) {
     mtx.unlock();
 }
 
-std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int> &universe, Graph &g) {
+std::vector<std::pair<double,std::pair<double, int>>> generate_entropy(int total, std::vector<int> &universe, Graph &g) {
 
-    auto ret = std::vector<std::pair<double, int>>(universe.size());
+    auto ret = std::vector<std::pair<double,std::pair<double, int>>>(universe.size());
 
     int cnt = 0;
     bool calculated = false;
@@ -63,7 +63,7 @@ std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int>
     #pragma omp parallel for
     for (int i = 0; i < universe.size(); i++) {
         double e = do_entropy2(total, universe[i], universe, g);
-        ret[i] = std::make_pair(e, universe[i]);
+        ret[i] = std::make_pair(g.wordlist_[universe[i]].second, std::make_pair(e, universe[i]));
         cnt++;
     }
     mtx.lock();
@@ -71,6 +71,7 @@ std::vector<std::pair<double, int>> generate_entropy(int total, std::vector<int>
     mtx.unlock();
 
     loading_bar.join();
+    system("clear");
 
     return ret;
 }
@@ -114,7 +115,7 @@ double do_entropy2(int total, int word, std::vector<int> universe, Graph &g) {
     double entropy = 0.0;
     int k = 0;
     for (int i = 0; i < universe.size(); i++) {
-        int pos = generate_word_match(g.wordlist_[word], g.wordlist_[universe[i]]);
+        int pos = generate_word_match(g.wordlist_[word].first, g.wordlist_[universe[i]].first);
         entropy_list[pos]++;
         k++;
     }
@@ -130,9 +131,6 @@ double do_entropy2(int total, int word, std::vector<int> universe, Graph &g) {
 double do_entropy(int total, std::vector<int> input, int word, std::vector<int> universe, Graph &g, int index, int type) {
 
     //TODO make wordlist not public!!
-
-    bool dummy = false;
-
     if (index >= 5) {
         universe = g.search_match(input, universe, false);
         double p = (1.0 * universe.size()) / total;
@@ -148,7 +146,7 @@ double do_entropy(int total, std::vector<int> input, int word, std::vector<int> 
     } 
     
     //get word index
-    char c = g.wordlist_[word][index];
+    char c = g.wordlist_[word].first[index];
 
     if (type == GREEN) {
         input.push_back(c - 'a' + (26 * (index + 1)));

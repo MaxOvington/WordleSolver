@@ -28,10 +28,18 @@ int translate_input(std::vector<int> &ret, std::vector<std::string> s) {
 
 void generate_universe(std::vector<int> &universe, Graph &g) {
     auto retval = generate_entropy(universe.size(), universe, g);
-
-    std::sort(retval.begin(), retval.end(), std::greater<std::pair<double, int>>());
+    std::sort(retval.begin(), retval.end(), std::greater<std::pair<double, std::pair<double, int>>>());
+    
+    if (universe.size() == 1) {
+        std::cout << "Word is: " << g.wordlist_[retval[0].second.second].first << "!\n";
+        return;
+    } else if (universe.size() == 0) {
+        std::cout << "No words match!\n";
+        return;
+    }
+    
     int size = (universe.size() < 20) ? universe.size() : 20;
     for (int i = 0; i < size; i++) {
-        std::cout << i + 1 << " " << g.wordlist_[retval[i].second] << " , " << retval[i].first << "\n";
+        std::cout << i + 1 << " " << g.wordlist_[retval[i].second.second].first << ", " << retval[i].second.first << "\n";
     }
 }

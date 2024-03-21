@@ -4,6 +4,7 @@
 #include <fstream>
 #include <algorithm>
 #include <unistd.h> 
+#include <cmath>
 
 auto Graph::print_graph_list() -> void {
     for (int i = 0; i < node_list_.size(); i++) {
@@ -18,7 +19,7 @@ auto Graph::print_graph_list() -> void {
 auto Graph::print_words() -> void {
     std::cout << "Graph contains the following words: \n";
     for (int i = 0; i < wordlist_.size(); i++) {
-        std::cout << "[" << wordlist_[i] << "] ";
+        std::cout << "[" << wordlist_[i].first << "] ";
     }
     std::cout << "\n";
 }
@@ -31,11 +32,11 @@ auto Graph::binarySearch(std::string word, int lo, int hi) -> bool {
     //binary search case where nothing left
     while (lo <= hi) {
         int mid = (lo + hi) / 2;
-        if (wordlist_[mid] == word) {
+        if (wordlist_[mid].first == word) {
             return true;
-        } else if (wordlist_[mid] > word) {
+        } else if (wordlist_[mid].first > word) {
             return binarySearch(word, lo, mid - 1);
-        } else if (wordlist_[mid] < word) {
+        } else if (wordlist_[mid].first < word) {
             return binarySearch(word, mid + 1, hi);
         }
     }
@@ -43,9 +44,14 @@ auto Graph::binarySearch(std::string word, int lo, int hi) -> bool {
 }
 
 
-auto Graph::add_edge(std::string word) -> void {
+auto Graph::add_edge(std::string line) -> void {
 
-    add_word(word);
+    std::istringstream word_stream(line);
+    std::string word;
+    long long prob;
+
+    word_stream >> word >> prob;
+    add_word(word, prob);
 
     //remove duplicate words
     int alphabet[ALPHABET_SIZE] = {0};
@@ -90,12 +96,13 @@ auto Graph::add_edge(std::string word) -> void {
     //std::cout << "Added word: [" << word << "]\n";
 }
 
-auto Graph::add_word(std::string s) -> void {
+auto Graph::add_word(std::string s, long long prob) -> void {
     //add to wordlist if not in wordlist
     if (!binarySearch(s, 0, wordlist_.size() - 1)) {
-        wordlist_.push_back(s);
+        //apply sigmoid function here
+        double val = 1.0 / (1 + exp(-prob + SIGMOID_CUT_OFF));
+        wordlist_.push_back(std::make_pair(s,val));
         active_words_.push_back(wordlist_.size() - 1);
-        //node_list_.push_back(std::vector<int>());
     }
 }
 
@@ -128,10 +135,6 @@ auto Graph::search_match(std::vector<int> vec, std::vector<int> &universe, bool 
         std::cout << "Error: Invalid input!\n";
         return universe;
     }
-
-    // if (is_printing) std::cout << "---------------------------------\n";
-    // if (is_printing) std::cout << "WORDS FOUND:: \n";
-    int cnt = 0;
     int iter = (is_first_round) ?  node_list_[vec[0]].size() : universe.size();
 
     for (int i = 0; i < iter; i++) {
@@ -141,18 +144,10 @@ auto Graph::search_match(std::vector<int> vec, std::vector<int> &universe, bool 
             (matrix_[vec[j]][universe[i] + NUM_LETTERS_TOTAL]);
         }
         if (eval) {
-            // FIRST ROUND --> word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
-            // NOT FIRST --> if (is_printing) std::cout << wordlist_[universe[i]] << " ";
-            //word_rounds_[node_list_[vec[0]][i] - NUM_LETTERS_TOTAL]++;
-            cnt++;
             (is_first_round) ? (match.push_back(node_list_[vec[0]][i] - NUM_LETTERS_TOTAL)) : 
             (match.push_back(universe[i]));
         } 
     }
-
-    // if (is_printing) std::cout << "\n";
-    // if (is_printing) std::cout << cnt << " WORDs\n";
-    // if (is_printing) std::cout << "---------------------------------\n";
     return match;
 }
 

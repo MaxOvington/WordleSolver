@@ -6,6 +6,7 @@
 #define NUM_LETTERS_TOTAL 312 //156 is pos, 156 negative
 #define NUM_LETTERS 156
 #define ALPHABET_SIZE 26
+#define SIGMOID_CUT_OFF 1000000
 
 class Graph {
     public: 
@@ -16,13 +17,13 @@ class Graph {
             int ret = process_words();
             if (ret < 0) std::exit(EXIT_FAILURE);
         }
-        auto add_edge(std::string word) -> void;
+        auto add_edge(std::string line) -> void;
         auto print_words() -> void;
         auto print_graph_list() -> void;
         auto search_match(std::vector<int> vec, std::vector<int> &universe, bool is_first_round) -> std::vector<int>;
         auto get_word_size() -> int;
         auto get_active_wordlist() -> std::vector<int>;
-        std::vector<std::string> wordlist_;
+        std::vector<std::pair<std::string, double>> wordlist_;
 
     private:
         int val_;
@@ -31,6 +32,6 @@ class Graph {
         std::vector<std::vector<int>> matrix_;
         auto binarySearch(std::string word, int lo, int hi) -> bool;
         auto process_words() -> int;
-        auto add_word(std::string s) -> void;
+        auto add_word(std::string s, long long prob) -> void;
 };
 
