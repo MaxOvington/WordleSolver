@@ -93,15 +93,12 @@ int generate_word_match(std::string &curr, std::string &target) {
     int num = 0;
     for (int i = 0; i < curr.size(); i++) {
         if (curr[i] == target[i]) {
-            //std::cout << "green\n";
             num = (num * 3) + 1;
         } else if (curr[i] != target[i] &&
         curr_alph[curr[i] - 'a'] < alph[curr[i] - 'a'] ) {
-            //std::cout << "orange\n";
             num = (num * 3) + 2;
         } else if (curr[i] != target[i] && 
         curr_alph[curr[i] - 'a'] >= alph[curr[i] - 'a']) {
-            //std::cout << "red\n";
             num = (num * 3) + 3;
         }
         curr_alph[curr[i] - 'a']++;

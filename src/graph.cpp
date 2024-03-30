@@ -65,20 +65,14 @@ auto Graph::add_edge(std::string line) -> void {
         //add positive connection 
         if (alphabet[i]){
             node_list_[i].push_back(NUM_LETTERS_TOTAL + wordlist_.size() - 1); 
-            //node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(i);
-            //adjacency matrix
             matrix_[i][wordlist_.size() - 1 + NUM_LETTERS_TOTAL] = 1;
-            //matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][i] = 1;
         } 
     }
 
     for (int i = 0; i < word.size(); i++) {
         //add positive connection for *1..5 letters
         node_list_[((i + 1) * 26) + (word[i] - 97)].push_back(wordlist_.size() - 1 + NUM_LETTERS_TOTAL);
-        //node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(((i + 1) * 26) + (word[i] - 97));
-        //adjacency matrix
         matrix_[((i + 1) * 26) + (word[i] - 97)][wordlist_.size() - 1 + NUM_LETTERS_TOTAL] = 1;
-        //matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][((i + 1) * 26) + (word[i] - 97)] = 1; 
     }
 
     //add remaining negative connections
@@ -87,13 +81,9 @@ auto Graph::add_edge(std::string line) -> void {
         if (node_list_[i].size() == 0 || 
         node_list_[i][node_list_[i].size() - 1] != wordlist_.size() - 1 + NUM_LETTERS_TOTAL) {
             node_list_[i + NUM_LETTERS].push_back(wordlist_.size() - 1 + NUM_LETTERS_TOTAL); 
-            //node_list_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL].push_back(i + NUM_LETTERS);
-            //adjacency matrix
-            matrix_[i + NUM_LETTERS][wordlist_.size() - 1 + NUM_LETTERS_TOTAL] = 1;
-            //matrix_[wordlist_.size() - 1 + NUM_LETTERS_TOTAL][i + NUM_LETTERS] = 1; 
+            matrix_[i + NUM_LETTERS][wordlist_.size() - 1 + NUM_LETTERS_TOTAL] = 1; 
         }
     }
-    //std::cout << "Added word: [" << word << "]\n";
 }
 
 auto Graph::add_word(std::string s, long long prob) -> void {
